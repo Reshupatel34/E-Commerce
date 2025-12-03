@@ -3,6 +3,8 @@ import mongoose from 'mongoose';
 //import bodyParser from 'mongoose';
 import userRouter from './Routes/user.js';
 import productRouter from './Routes/product.js';
+import cartRouter from './Routes/cart.js';
+
 
 const app=express();
 app.use(express.json());
@@ -14,6 +16,8 @@ app.use('/api/user',userRouter);
 
 app.use('/api/product',productRouter);
 
+
+app.use('/api/cart',cartRouter);
 
 
 mongoose.connect("mongodb+srv://=-0reshupatel3645_db_user:gRbFcNI3lywhwe1N@cluster0.zkphofu.mongodb.net/",{dbName:"Mern_E_Commerce"}).then(()=>console.log("Mongoose Connected successfully....")).catch((error)=>{console.log(error)});

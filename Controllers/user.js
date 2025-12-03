@@ -1,5 +1,6 @@
 import {User} from '../Models/User.js';
 import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
 
 
 
@@ -37,7 +38,9 @@ export const login =async(req ,res)=>{
 
          if(!validPassword) return res.json({message:"Invalid credentials ",success:false});
 
-         res.json({message:`welcome ${user.name}`,success:true,user});
+         const token = jwt.sign({userId:user._id},"!@#$%^&*())(*&^%$#@!",{expiresIn:'365d'});
+
+         res.json({message:`welcome ${user.name}`,token,success:true});
 
     }catch(error){
        res.json({message:error.message});
