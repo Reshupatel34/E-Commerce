@@ -1,18 +1,18 @@
 import express from 'express';
 import mongoose from 'mongoose';
-import bodyParser from 'mongoose';
+//import bodyParser from 'mongoose';
 import userRouter from './Routes/user.js';
-
+import productRouter from './Routes/product.js';
 
 const app=express();
-app,use(bodyParser.json());
+app.use(express.json());
 
 
 //user router
 
 app.use('/api/user',userRouter);
 
-
+app.use('/api/product',productRouter);
 
 
 
